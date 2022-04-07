@@ -1,0 +1,104 @@
+.container {
+  background: #0071BB;
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+
+  .admin {
+      // position: absolute;
+      background: #FFFFFF;
+      border-radius: 30px;
+      margin: auto;
+      width: 792px;
+
+      .admin-login {
+          margin: 41px 39px 0 31px;
+
+          .admin-login__logo {
+              margin-bottom: 42px;
+              display: flex;
+              justify-content: center;
+          }
+
+          .mg-bottom {
+              margin-bottom: 26px;
+          }
+
+          .admin-login__name {
+
+              span {
+                  font-weight: 500;
+                  font-size: 18px;
+                  line-height: 22px;
+                  color: #272727;
+              }
+
+              .admin-login__name-input {
+                  position: relative;
+                  input {
+                      width: 100%;
+                      padding: 14px 0 11px 19px;
+                      background: #FFFFFF;
+                      border: 1px solid #B8BDC6;
+                      border-radius: 8px;
+                      &::placeholder {
+                          font-weight: 400;
+                          font-size: 18px;
+                          line-height: 22px;
+                          color: #283446;
+                      }
+
+                  }
+
+                  img {
+                      position: absolute;
+                      top: 14px;
+                      right: 10px
+                  }
+              }
+          }
+
+          .admin-login__forget {
+              margin-top: 20px;
+
+
+              span {
+                  font-weight: 700;
+                  font-size: 18px;
+                  line-height: 22px;
+                  color: #0071BB;
+                  text-align: right;
+                  float: right;
+                  margin-right: 8px;
+                  margin-bottom: 23px;
+              }
+          }
+
+          .admin-login__button {
+              display: flex;
+              justify-content:center;
+              width: 100%;
+              padding-bottom: 59px;
+
+
+              button {
+                  background: #0071BB;
+                  border-radius: 32px;
+                  border: none;
+
+                  span {
+                      font-weight: 700;
+                      font-size: 20px;
+                      line-height: 24px;
+                      color:#fff;
+                      padding: 21px 54px 20px 52px;
+                      display: block;
+                  }
+              }
+          }
+      }
+  }
+}
