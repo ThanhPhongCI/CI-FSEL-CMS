@@ -2,8 +2,12 @@
 
     <mat-drawer-container class="example-container" autosize>
         <div class="main-layout-header">
-            <!-- <app-header-logo (click)="drawer.toggle()"></app-header-logo> -->
-            <!-- <app-header-info></app-header-info> -->
+          <div class="container-box">
+            <app-search-info></app-search-info>
+            <app-search-btn></app-search-btn>
+              <!-- <app-header-logo (click)="drawer.toggle()"></app-header-logo> -->
+            </div>
+            <app-header-info></app-header-info>
         </div>
         <mat-drawer opened #drawer class="example-sidenav" mode="side">
             <app-nav-menu [dataNavMenu]='dataNav'></app-nav-menu>

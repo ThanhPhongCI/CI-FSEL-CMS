@@ -1,0 +1,25 @@
+.container-box-btn {
+  display: flex;
+  align-items: flex-end;
+
+  .container-btn {
+    margin-right: 25px;
+    background: #0071BB;
+    border: 1px solid #DCDCDC;
+    box-sizing: border-box;
+    border-radius: 7px;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: center;
+    color: #FFFFFF;
+    padding: 12px 22px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+
+    .container-box-img {
+      margin-right: 10px;
+    }
+  }
+}
