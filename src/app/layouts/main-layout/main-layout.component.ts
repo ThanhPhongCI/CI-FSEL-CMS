@@ -21,9 +21,9 @@ export class MainLayoutComponent implements OnInit {
         name: 'Danh mục',
         linkURL: '',
         subs: [
-          { name: 'Danh mục Tỉnh/TP', path: 'setting/account-list' },
-          { name: 'Danh mục Quận/Huyện', path: 'setting/privileges' },
-          { name: 'Danh mục Trường', path: 'setting/authorization' }
+          { name: 'Danh mục Tỉnh/TP', path: 'category' },
+          { name: 'Danh mục Quận/Huyện', path: 'category/2' },
+          { name: 'Danh mục Trường', path: 'category/3' }
         ]
       },
 
