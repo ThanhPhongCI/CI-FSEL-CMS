@@ -4,14 +4,12 @@ import { MainComponent } from './main.component';
 import { MainLayoutModule } from 'src/app/layouts/main-layout/main-layout.module';
 import { RouterModule } from '@angular/router';
 import { mainRoutes } from './main.routes';
-import { HomeComponent } from './home/home.component';
 
 
 
 @NgModule({
   declarations: [
-    MainComponent,
-    HomeComponent
+    MainComponent
   ],
   imports: [
     CommonModule,

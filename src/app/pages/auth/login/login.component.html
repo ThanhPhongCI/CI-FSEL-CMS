@@ -17,11 +17,11 @@
                   <img src="assets/img/icon-show.svg" alt="">
               </div>
           </div>
-          <div class="admin-login__forget">
+          <div class="admin-login__forget" [routerLink]="['/forgot']">
               <span>Quên mật khẩu</span>
           </div>
           <div class="admin-login__button">
-              <button>
+              <button (click)="login()">
                   <span>Đăng nhập</span>
               </button>
           </div>
