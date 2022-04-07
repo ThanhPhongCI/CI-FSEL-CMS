@@ -1,0 +1,101 @@
+.container {
+  background: #0071BB;
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+
+  .admin {
+      background: #FFFFFF;
+      border-radius: 30px;
+      margin: auto;
+      width: 792px;
+
+      .admin-title {
+          text-align: center;
+          border-bottom: 1px solid #6A6A6A;
+          transform: rotate(-0.07deg);
+          padding: 36px 0 28px 0;
+
+          h1 {
+              font-weight: 500;
+              font-size: 25px;
+              line-height: 30px;
+              color: #272727;
+              margin: 0;
+          }
+      }
+
+      .admin-confirm {
+          margin: 43px 35px 0 35px;
+
+          .admin-confirm__code {
+
+              span {
+                  font-weight: 500;
+                  font-size: 18px;
+                  line-height: 22px;
+                  color: #272727;
+                  display: block;
+
+              }
+              .admin-confirm__code-input {
+
+                  input {
+                      width: 100%;
+                      padding: 14px 0 11px 19px;
+                      background: #FFFFFF;
+                      border: 1px solid #B8BDC6;
+                      border-radius: 8px;
+                      &::placeholder {
+                          font-weight: 400;
+                          font-size: 18px;
+                          line-height: 22px;
+                          color: #283446;
+                      }
+                  }
+              }
+          }
+
+          .admin-confirm__button {
+              display: flex;
+              justify-content:center;
+              width: 100%;
+              // padding-bottom: 61px;
+              margin-top: 34px;
+
+              button {
+                  background: #0071BB;
+                  border-radius: 32px;
+                  border: none;
+                  cursor: pointer;
+
+                  span {
+                      font-weight: 700;
+                      font-size: 20px;
+                      line-height: 24px;
+                      color:#fff;
+                      padding: 21px 64px 20px 64px;
+                      display: block;
+                  }
+              }
+          }
+
+          .admin-confirm__send {
+              text-align: center;
+              margin: 22px 0 17px 0;
+
+              span {
+                  font-weight: 700;
+                  font-size: 18px;
+                  line-height: 22px;
+                  color: #536DFD;
+
+              }
+          }
+
+      }
+  }
+}
