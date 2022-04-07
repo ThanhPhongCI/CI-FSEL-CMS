@@ -16,7 +16,7 @@
       align-items: center;
       width: 100%;
       align-items: flex-end;
-      margin-right: 40px;
+    //   margin-right: 40px;
     }
   }
 
@@ -44,4 +44,7 @@
   ::ng-deep .mat-drawer-inner-container {
     overflow: hidden !important;
   }
+}
+.profile{
+    width: 130px;
 }

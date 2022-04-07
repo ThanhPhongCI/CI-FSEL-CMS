@@ -7,7 +7,10 @@
             <app-search-btn></app-search-btn>
               <!-- <app-header-logo (click)="drawer.toggle()"></app-header-logo> -->
             </div>
-            <app-header-info></app-header-info>
+            <div class="profile">
+
+                <app-header-info></app-header-info>
+            </div>
         </div>
         <mat-drawer opened #drawer class="example-sidenav" mode="side">
             <app-nav-menu [dataNavMenu]='dataNav'></app-nav-menu>
