@@ -1,7 +1,12 @@
 .container-left {
   display: flex;
+  align-items: flex-end;
   .container-left__box {
       margin-right: 25px;
+
+      @media screen and (max-width: 1550px){
+        margin-right: 15px;
+      }
 
       .container-box__text {
           font-weight: 500;
@@ -21,6 +26,11 @@
           line-height: 22px;
           color: #283446;
           outline: none;
+
+          @media screen and (max-width:1550px){
+            font-size: 15px;
+            padding: 10px 5px;
+          }
       }
 
       .select-box {
@@ -38,6 +48,11 @@
               border-radius: 7px;
               outline: none;
               -webkit-appearance: none;
+
+              @media screen and (max-width:1550px){
+                font-size: 15px;
+                padding: 10px 45px;
+              }
           }
           .check {
               position: absolute;
