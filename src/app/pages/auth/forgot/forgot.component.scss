@@ -43,20 +43,29 @@
               }
 
               .admin-forget__address-input {
-
+                  position: relative;
 
                   input {
                       width: 100%;
-                      padding: 14px 30px 11px 19px;
+                      padding: 14px 45px 11px 19px;
                       background: #FFFFFF;
                       border: 1px solid #B8BDC6;
                       border-radius: 8px;
+                      &:focus {
+                        outline: none;
+                      }
                       &::placeholder {
                           font-weight: 400;
                           font-size: 18px;
                           line-height: 22px;
                           color: #283446;
                       }
+                  }
+                  img {
+                    position: absolute;
+                    top: 15px;
+                    right: 15px;
+                    cursor: pointer;
                   }
               }
           }

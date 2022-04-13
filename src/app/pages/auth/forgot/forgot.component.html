@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="admin">
+  <div class="admin" [formGroup]="forGot">
       <div class="admin-title">
           <h1>QUÊN MẬT KHẨU</h1>
       </div>
@@ -7,7 +7,8 @@
           <div class="admin-forget__address">
               <span>Địa chỉ email</span>
               <div class="admin-forget__address-input">
-                  <input type="text" placeholder="Vui lòng nhập địa chỉ email">
+                  <input type="text" placeholder="Vui lòng nhập địa chỉ email" formControlName="passwordnew" (keydown.space)="$event.preventDefault()">
+                  <img class="clear" src="assets/img/delete-while.svg" alt="" (click)="handleClear()" *ngIf="f.passwordnew.value">
               </div>
           </div>
           <div class="admin-forget__button">

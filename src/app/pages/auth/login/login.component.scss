@@ -40,11 +40,14 @@
                   position: relative;
                   input {
                       width: 100%;
-                      padding: 14px 30px 11px 19px;
+                      padding: 14px 45px 11px 19px;
                       background: #FFFFFF;
                       border: 1px solid #B8BDC6;
                       border-radius: 8px;
                       margin-bottom: 10px;
+                      &:focus {
+                        outline: none;
+                      }
                       &::placeholder {
                           font-weight: 400;
                           font-size: 18px;
@@ -65,7 +68,7 @@
           }
 
           .admin-login__forget {
-              margin-top: 20px;
+              margin-top: 5px;
 
 
               span {
@@ -77,6 +80,7 @@
                   float: right;
                   margin-right: 8px;
                   margin-bottom: 23px;
+                  cursor: pointer;
               }
           }
 

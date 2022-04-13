@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { FormBuilder, Validators } from '@angular/forms';
+
 
 @Component({
   selector: 'app-forgot',
@@ -7,7 +10,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ForgotComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private fb:FormBuilder,
+    public router: Router
+  ) { }
+
+  forGot= this.fb.group ({
+    "passwordnew": ["",Validators.required,Validators.pattern('^[qwertyuioplkjhgfdsazxcvbnm1234567890]*$')],
+  })
+
+  get f() {
+    return this.forGot.controls
+  }
+
+  handleClear() {
+    this.forGot.get('passwordnew')?.setValue('');
+
+  }
+
 
   ngOnInit(): void {
   }

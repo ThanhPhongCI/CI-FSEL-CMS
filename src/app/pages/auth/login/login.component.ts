@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -8,12 +9,20 @@ import { FormBuilder, Validators } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private fb:FormBuilder) { }
+  constructor(
+    private fb:FormBuilder,
+    public router: Router
+    ) { }
+
+
   formLogin = this.fb.group({
-    "email":["",Validators.required,Validators.email],
-    "password": ["",Validators.required,Validators.email]
+    "email":["",Validators.required,Validators.email,Validators.pattern('^[qwertyuioplkjhgfdsazxcvbnm1234567890]*$')],
+    "password": ["",Validators.required,Validators.pattern('^[qwertyuioplkjhgfdsazxcvbnm1234567890]*$')],
 
   })
+
+
+
   get f() {
     return this.formLogin.controls
   }
@@ -21,6 +30,13 @@ export class LoginComponent implements OnInit {
   handleClear() {
     this.formLogin.get('email')?.setValue('');
     this.formLogin.get('password')?.setValue('');
+  }
+
+  forgot() {
+    this.router.navigate(['forgot']);
+    setTimeout(() => {
+      window.location.reload();
+    }, 300);
   }
 
 

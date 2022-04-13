@@ -7,7 +7,7 @@
           <div class="admin-login__name mg-bottom">
               <span>Tên đăng nhập</span>
               <div class="admin-login__name-input">
-                  <input type="text" placeholder="Vui lòng nhập tên đăng nhập" formControlName="email">
+                  <input type="text" placeholder="Vui lòng nhập tên đăng nhập" formControlName="email" (keydown.space)="$event.preventDefault()">
                   <img class="clear" src="assets/img/delete-while.svg" alt="" (click)="handleClear()" *ngIf="f.email.value">
                   <div  class="ng-star-inserted d-none">
                     <p class="alert-1 ng-star-inserted">
@@ -24,7 +24,7 @@
           <div class="admin-login__name">
               <span>Mật khẩu</span>
               <div class="admin-login__name-input">
-                  <input type="password" placeholder="Vui lòng nhập mật khẩu" formControlName="password">
+                  <input type="password" placeholder="Vui lòng nhập mật khẩu" formControlName="password" (keydown.space)="$event.preventDefault()">
                   <img class="d-none" src="assets/img/icon-show.svg" alt="" >
                   <img class="clear" src="assets/img/delete-while.svg" alt="" (click)="handleClear()" *ngIf="f.password.value">
                   <div class="ng-star-inserted d-none">
@@ -40,7 +40,7 @@
               </div>
           </div>
           <div class="admin-login__forget">
-              <span>Quên mật khẩu</span>
+              <span (click)="forgot()">Quên mật khẩu</span>
           </div>
           <div class="admin-login__button">
               <button>
