@@ -8,6 +8,7 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
 import { ConfirmOtpComponent } from './confirm-otp/confirm-otp.component';
 import { RouterModule } from '@angular/router';
 import { authRoutes } from './auth.routes';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -16,7 +17,8 @@ import { authRoutes } from './auth.routes';
   imports: [
     CommonModule,
     AuthLayoutModule,
-    RouterModule.forChild(authRoutes)
+    RouterModule.forChild(authRoutes),
+    ReactiveFormsModule
   ],
   exports: [AuthComponent]
 })

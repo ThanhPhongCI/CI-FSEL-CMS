@@ -8,6 +8,7 @@ import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component
 import { AuthLayoutModule } from './layouts/auth-layout/auth-layout.module';
 import { MainLayoutModule } from './layouts/main-layout/main-layout.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppRoutingModule,
     AuthLayoutModule,
     MainLayoutModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ReactiveFormsModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

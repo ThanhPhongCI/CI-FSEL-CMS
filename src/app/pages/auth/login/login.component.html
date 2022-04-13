@@ -1,20 +1,42 @@
 <div class="container">
   <div class="admin">
-      <div class="admin-login">
+      <div [formGroup]="formLogin" class="admin-login">
           <div class="admin-login__logo">
               <img src="assets/img/logo.png" alt="">
           </div>
           <div class="admin-login__name mg-bottom">
               <span>Tên đăng nhập</span>
               <div class="admin-login__name-input">
-                  <input type="text" placeholder="Vui lòng nhập tên đăng nhập">
+                  <input type="text" placeholder="Vui lòng nhập tên đăng nhập" formControlName="email">
+                  <img class="clear" src="assets/img/delete-while.svg" alt="" (click)="handleClear()" *ngIf="f.email.value">
+                  <div  class="ng-star-inserted d-none">
+                    <p class="alert-1 ng-star-inserted">
+                      Tên đăng nhập hoặc mật khẩu không hợp lệ
+                    </p>
+                  </div>
+                  <div *ngIf="f.email.invalid && (f.email.dirty || f.email.touched)" class="ng-star-inserted">
+                    <p class="alert-1 ng-star-inserted">
+                      Vui lòng nhập đầy đủ thông tin
+                    </p>
+                  </div>
               </div>
           </div>
           <div class="admin-login__name">
               <span>Mật khẩu</span>
               <div class="admin-login__name-input">
-                  <input type="text" placeholder="Vui lòng nhập mật khẩu">
-                  <img src="assets/img/icon-show.svg" alt="">
+                  <input type="password" placeholder="Vui lòng nhập mật khẩu" formControlName="password">
+                  <img class="d-none" src="assets/img/icon-show.svg" alt="" >
+                  <img class="clear" src="assets/img/delete-while.svg" alt="" (click)="handleClear()" *ngIf="f.password.value">
+                  <div class="ng-star-inserted d-none">
+                    <p class="alert-1 ng-star-inserted">
+                      Tên đăng nhập hoặc mật khẩu không hợp lệ
+                    </p>
+                  </div>
+                  <div *ngIf="f.password.invalid && (f.password.dirty || f.password.touched)" class="ng-star-inserted">
+                    <p class="alert-1 ng-star-inserted">
+                      Vui lòng nhập đầy đủ thông tin
+                    </p>
+                  </div>
               </div>
           </div>
           <div class="admin-login__forget">
@@ -22,8 +44,13 @@
           </div>
           <div class="admin-login__button">
               <button>
-                  <span>Đăng nhập</span>
+                <span>Đăng nhập</span>
               </button>
+              <div class="ng-star-inserted d-none">
+                <p class="alert-1 ng-star-inserted text-align">
+                  Có lỗi xảy ra, vui lòng thử lại
+                </p>
+              </div>
           </div>
       </div>
   </div>
