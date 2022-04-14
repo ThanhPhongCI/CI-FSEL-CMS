@@ -1,1 +1,30 @@
-<p>login works!</p>
+<div class="container">
+  <div class="admin">
+      <div class="admin-login">
+          <div class="admin-login__logo">
+              <img src="assets/img/logo.png" alt="">
+          </div>
+          <div class="admin-login__name mg-bottom">
+              <span>Tên đăng nhập</span>
+              <div class="admin-login__name-input">
+                  <input type="text" placeholder="Vui lòng nhập tên đăng nhập">
+              </div>
+          </div>
+          <div class="admin-login__name">
+              <span>Mật khẩu</span>
+              <div class="admin-login__name-input">
+                  <input type="text" placeholder="Vui lòng nhập mật khẩu">
+                  <img src="assets/img/icon-show.svg" alt="">
+              </div>
+          </div>
+          <div class="admin-login__forget" [routerLink]="['/forgot']">
+              <span>Quên mật khẩu</span>
+          </div>
+          <div class="admin-login__button">
+              <button (click)="login()">
+                  <span>Đăng nhập</span>
+              </button>
+          </div>
+      </div>
+  </div>
+</div>

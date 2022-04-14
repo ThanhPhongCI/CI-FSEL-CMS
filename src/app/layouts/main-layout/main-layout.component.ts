@@ -18,12 +18,12 @@ export class MainLayoutComponent implements OnInit {
       },
       {
         icon: 'assets/img/category-icon.svg',
-        name: 'Danh mục',
+        name: 'User',
         linkURL: '',
         subs: [
-          { name: 'Danh mục Tỉnh/TP', path: 'category' },
-          { name: 'Danh mục Quận/Huyện', path: 'category/2' },
-          { name: 'Danh mục Trường', path: 'category/3' }
+          { name: 'Danh mục Tỉnh/TP', path: 'user' },
+          { name: 'Danh mục Quận/Huyện', path: '' },
+          { name: 'Danh mục Trường', path: '' }
         ]
       },
 

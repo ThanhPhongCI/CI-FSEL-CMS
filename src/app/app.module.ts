@@ -11,6 +11,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderInfoComponent } from './components/header-info/header-info.component';
 import { SearchInfoComponent } from './components/search-info/search-info.component';
 import { SearchBtnComponent } from './components/search-btn/search-btn.component';
+import { AppGuard } from './utils/guards/app.guard';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,7 @@ import { SearchBtnComponent } from './components/search-btn/search-btn.component
     MainLayoutModule,
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [AppGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
