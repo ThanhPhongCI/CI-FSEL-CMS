@@ -9,7 +9,7 @@ import { mainRoutes } from './main.routes';
 
 @NgModule({
   declarations: [
-    MainComponent,  
+    MainComponent,
   ],
   imports: [
     CommonModule,
