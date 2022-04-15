@@ -3,19 +3,30 @@
       <div class="admin-title">
           <h1>QUÊN MẬT KHẨU</h1>
       </div>
+      <div class="admin-notifi">
+        <div class="admin-notifi__parapt">
+          <p class="">Nhập thông tin vào bên dưới để yêu cầu đặt lại mật khẩu cho tài khoản của bạn</p>
+        </div>
+      </div>
       <div class="admin-forget">
           <div class="admin-forget__address">
               <span>Địa chỉ email</span>
               <div class="admin-forget__address-input">
-                  <input type="text" placeholder="Vui lòng nhập địa chỉ email" formControlName="passwordnew" (keydown.space)="$event.preventDefault()">
-                  <img class="clear" src="assets/img/delete-while.svg" alt="" (click)="handleClear()" *ngIf="f.passwordnew.value">
+                  <input type="text" placeholder="tenhomthu@gmail.com" formControlName="email" (keydown.space)="$event.preventDefault()">
+                  <img class="clear" src="assets/img/delete-while.svg" alt="" (click)="handleClear()" *ngIf="f.email.value">
               </div>
+
           </div>
-          <div class="admin-forget__button">
-              <button>
-                  <span>Xác nhận</span>
-              </button>
-          </div>
+          <p *ngIf="f.email.invalid && (f.email.dirty || f.email.touched)" class="alert-1 ng-star-inserted">
+            Vui lòng nhập đầy đủ thông tin
+          </p>
+
+
+      </div>
+      <div class="admin-forget__button">
+        <button (click)="confirm()" >
+            <span>Gửi xác nhận</span>
+        </button>
       </div>
   </div>
 </div>

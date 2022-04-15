@@ -16,7 +16,7 @@ export class ForgotComponent implements OnInit {
   ) { }
 
   forGot= this.fb.group ({
-    "passwordnew": ["",Validators.required,Validators.pattern('^[qwertyuioplkjhgfdsazxcvbnm1234567890]*$')],
+    "email": ["",[Validators.required,Validators.email]],
   })
 
   get f() {
@@ -24,8 +24,20 @@ export class ForgotComponent implements OnInit {
   }
 
   handleClear() {
-    this.forGot.get('passwordnew')?.setValue('');
+    this.forGot.get('email')?.setValue('');
 
+  }
+
+  onSubmit() {
+    console.log(this.forGot.value);
+  }
+
+  confirm() {
+    console.log(this.forGot.value);
+    this.router.navigate(['confirm-otp']);
+    setTimeout(() => {
+      window.location.reload();
+    },300)
   }
 
 

@@ -1,23 +1,41 @@
 <div class="container">
-  <div class="admin">
+  <div class="admin" [formGroup]="conFirm">
       <div class="admin-title">
           <h1>XÁC THỰC OTP</h1>
       </div>
+      <div class="admin-notifi">
+        <div class="admin-notifi__parapt">
+          <p class="">Vui lòng nhập mã OTP được gửi đến email t***@gmail.com</p>
+        </div>
+      </div>
       <div class="admin-confirm">
           <div class="admin-confirm__code">
-              <span>Mã OTP</span>
+              <span>Xác thực OTP</span>
               <div class="admin-confirm__code-input">
-                  <input type="text" placeholder="Vui lòng nhập mã OTP đã nhận">
+                  <input type="text" formControlName="otp">
+                  <img class="clear" src="assets/img/delete-while.svg" alt="" (click)="handleClear()" *ngIf="f.otp.value">
+
               </div>
           </div>
-          <div class="admin-confirm__button">
-              <button>
-                  <span>Xác nhận</span>
-              </button>
-          </div>
-          <div class="admin-confirm__send">
-              <span>Gửi lại mã OTP</span>
-          </div>
+          <p *ngIf="f.otp.invalid && (f.otp.dirty || f.otp.touched)" class="alert-1 ng-star-inserted">
+            Vui lòng nhập đầy đủ thông tin
+          </p>
+
       </div>
+      <div class="admin-notifi mg-none">
+        <div class="admin-confirm__button">
+          <button (click)="onSubmit()">
+              <span>Xác nhận</span>
+          </button>
+        </div>
+        <div class="admin-confirm__message">
+          <span>Bạn không nhận được tin nhắn?</span>
+        </div>
+        <div class="admin-confirm__click">
+          <span>Vui lòng bấm</span>
+          <button><span>Gửi lại mã</span></button>
+        </div>
+      </div>
+
   </div>
 </div>

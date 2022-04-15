@@ -7,15 +7,15 @@
           <div class="admin-login__name mg-bottom">
               <span>Tên đăng nhập</span>
               <div class="admin-login__name-input">
-                  <input type="text" placeholder="Vui lòng nhập tên đăng nhập" formControlName="email" (keydown.space)="$event.preventDefault()">
+                  <input type="text" placeholder="Vui lòng nhập tên đăng nhập" formControlName="email" (focus)="focus()" (keydown.space)="$event.preventDefault()">
                   <img class="clear" src="assets/img/delete-while.svg" alt="" (click)="handleClear()" *ngIf="f.email.value">
-                  <div  class="ng-star-inserted d-none">
+                  <div *ngIf="checkNullAdmin" class="ng-star-inserted">
                     <p class="alert-1 ng-star-inserted">
-                      Tên đăng nhập hoặc mật khẩu không hợp lệ
+                      Vui lòng nhập đầy đủ thông tin
                     </p>
                   </div>
-                  <div *ngIf="f.email.invalid && (f.email.dirty || f.email.touched)" class="ng-star-inserted">
-                    <p class="alert-1 ng-star-inserted">
+                  <div *ngIf="f.email.errors && (f.email.dirty || f.email.touched)" class="ng-star-inserted">
+                    <p class="alert-1 ng-star-inserted" *ngIf="!checkNullAdmin">
                       Vui lòng nhập đầy đủ thông tin
                     </p>
                   </div>
@@ -24,16 +24,16 @@
           <div class="admin-login__name">
               <span>Mật khẩu</span>
               <div class="admin-login__name-input">
-                  <input type="password" placeholder="Vui lòng nhập mật khẩu" formControlName="password" (keydown.space)="$event.preventDefault()">
+                  <input type="password" placeholder="Vui lòng nhập mật khẩu" formControlName="password" (focus)="focus()" (keydown.space)="$event.preventDefault()">
                   <img class="d-none" src="assets/img/icon-show.svg" alt="" >
-                  <img class="clear" src="assets/img/delete-while.svg" alt="" (click)="handleClear()" *ngIf="f.password.value">
-                  <div class="ng-star-inserted d-none">
+                  <img class="clear" src="assets/img/delete-while.svg" alt="" (click)="handleClearTwo()" *ngIf="f.password.value">
+                  <div *ngIf="checkNullPass" class="ng-star-inserted">
                     <p class="alert-1 ng-star-inserted">
-                      Tên đăng nhập hoặc mật khẩu không hợp lệ
+                      Vui lòng nhập đầy đủ thông tin
                     </p>
                   </div>
-                  <div *ngIf="f.password.invalid && (f.password.dirty || f.password.touched)" class="ng-star-inserted">
-                    <p class="alert-1 ng-star-inserted">
+                  <div *ngIf="f.password.errors && (f.password.dirty || f.password.touched)" class="ng-star-inserted">
+                    <p class="alert-1 ng-star-inserted" *ngIf="!checkNullPass">
                       Vui lòng nhập đầy đủ thông tin
                     </p>
                   </div>
@@ -43,14 +43,10 @@
               <span (click)="forgot()">Quên mật khẩu</span>
           </div>
           <div class="admin-login__button">
-              <button>
+              <button type="submit" (click)="onSubmit()">
                 <span>Đăng nhập</span>
               </button>
-              <div class="ng-star-inserted d-none">
-                <p class="alert-1 ng-star-inserted text-align">
-                  Có lỗi xảy ra, vui lòng thử lại
-                </p>
-              </div>
+
           </div>
       </div>
   </div>

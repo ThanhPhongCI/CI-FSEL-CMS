@@ -8,6 +8,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+  checkNullAdmin = false;
+  checkNullPass = false;
 
   constructor(
     private fb:FormBuilder,
@@ -16,8 +18,8 @@ export class LoginComponent implements OnInit {
 
 
   formLogin = this.fb.group({
-    "email":["",Validators.required,Validators.email,Validators.pattern('^[qwertyuioplkjhgfdsazxcvbnm1234567890]*$')],
-    "password": ["",Validators.required,Validators.pattern('^[qwertyuioplkjhgfdsazxcvbnm1234567890]*$')],
+    "email":["",[Validators.required,Validators.email]],
+    "password": ["",[Validators.required]],
 
   })
 
@@ -29,6 +31,9 @@ export class LoginComponent implements OnInit {
 
   handleClear() {
     this.formLogin.get('email')?.setValue('');
+
+  }
+  handleClearTwo() {
     this.formLogin.get('password')?.setValue('');
   }
 
@@ -39,13 +44,52 @@ export class LoginComponent implements OnInit {
     }, 300);
   }
 
+  focus() {
+    this.checkNullAdmin = false;
+    this.checkNullPass = false;
+  }
+
+
 
 
   ngOnInit(): void {
   }
 
   onSubmit() {
+    this.formLogin.value.email = this.formLogin.value.email.toLowerCase();
+
+  if(!this.formLogin.valid){
+    if (!this.formLogin.value.email) {
+      this.checkNullAdmin = true;
+      if (!this.formLogin.value.password) {
+        this.checkNullPass = true;
+      } else {
+        this.checkNullPass = false;
+      }
+    } else if (!this.formLogin.value.password) {
+      this.checkNullPass = true;
+      if (!this.formLogin.value.email) {
+        this.checkNullAdmin = true;
+      } else {
+        this.checkNullAdmin = false;
+      }
+    } else{
+
+
+
+    }
+  }else{
     console.log(this.formLogin.value)
+
+  }
+
+    // if (!this.formLogin.value.email && !this.formLogin.value.password) {
+    //   this.checkNullAdmin = true;
+    //   this.checkNullPass = true;
+    // }
+
+
+
   }
 
 }
