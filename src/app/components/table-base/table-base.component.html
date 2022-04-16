@@ -1,0 +1,74 @@
+<div class="table-style">
+	<div class="row btn-header">
+	  <div class="group-btn">
+		<div class="group-btn-item" *ngFor="let i of listActive">
+		  <span *ngIf="showDelete">
+			<button *ngIf="i.type !== 'create'" class="btn" [class]="i.class" (click)="onClickBtnActive(i)">
+			  {{ i?.text }}
+			</button>
+		  </span>
+		  <button *ngIf="i.type === 'create'" class="btn" [class]="i.class"
+			(click)="onClickBtnActive(i)">
+			{{ i?.text }}
+		  </button>
+		</div>
+	  </div>
+	  <div class="paginator">
+		<div class="current-page">
+		  <button (click)="backPage()">
+			<img src="assets/img/icon-left.svg" />
+		  </button>
+		  <span>{{ currentPage }}</span>
+		  <button (click)="nextPage()">
+			<img src="assets/img/icon-right.svg" />
+		  </button>
+		</div>
+		<span>/ {{ totalPage }}</span>
+	  </div>
+	</div>
+	<div class="scroll">
+	  <table class="data-table">
+		<thead>
+		  <tr>
+			<th scope="col" *ngFor="let item of tableData" [style.min-width.px]="item.width">
+			  {{ item.name }}
+			  <input class="checkbox" *ngIf="item.type === 'checkbox'" [checked]="checkSelectAll"
+				(click)="selectAll($event.target)" type="checkbox" />
+			</th>
+		  </tr>
+		</thead>
+		<tbody>
+		  <tr *ngFor="let item of dataSub; let t = index">
+			<td *ngFor="let i of tableData">
+				<span *ngIf="i.type == 'stt'">
+					{{t+1}}
+				</span>
+			  <span *ngIf="i.type === 'image'">
+				<img class="image" src="{{ item[i.id] }}" alt="" srcset="" />
+			  </span>
+			  <span *ngIf="i.type === 'number'" (click)="handleRouteLink(item); handleClickRow(item)">{{ item[i.id] |
+				number }}</span>
+			  <span *ngIf="i.type === 'text'" (click)="handleRouteLink(item); handleClickRow(item)">
+				{{ item[i.id]}}
+			  </span>
+			  <span *ngIf="i.type === 'object'" (click)="handleRouteLink(item); handleClickRow(item)">{{
+				item[i.id][i.idSub] }}</span>
+			  <span *ngIf="i.type === 'date'" (click)="handleRouteLink(item); handleClickRow(item)">
+				{{ item[i.id] | date: "dd-MM-yyyy" }}
+			  </span>
+			  <span *ngIf="i.type === 'edit'">
+				<button (click)="onClickSetting(item, 'edit')" class="btn-table">
+				  <img src="./assets/img/edit.svg" alt="" srcset="" />
+				</button>
+			  </span>
+			  <span *ngIf="i.type === 'delete'">
+				<button (click)="onClickSetting(item, 'delete')" class="btn-table">
+				  <img src="./assets/img/un-lock.svg" alt="" srcset="" />
+				</button>
+			  </span>
+			</td>
+		  </tr>
+		</tbody>
+	  </table>
+	</div>
+  </div>

@@ -1,0 +1,62 @@
+
+
+<app-table-base [tableData]="dataTable" [data]="dataSub" [listActive]="listActive" (callback)="handleOutput($event)"></app-table-base>
+  
+
+
+  <div class="modal" [ngClass]="{'show': showForm}">
+	<div class="modal__overlay" (click)="hideForm()"></div>
+	<div class="modal__body">
+		<div class="modal__container">
+			<div class="modal__header">
+				<span class="modal__text">Chỉnh sửa thông tin</span>
+				<img src="./assets/img/close.svg" alt="" class="modal__close">
+			</div>
+  
+			<div class="modal__content">
+			  <div class="modal__input">
+				<span class="modal__input-text">Tiêu đề</span>
+				<input type="text">
+			</div>
+  
+				<div class="modal__input">
+					<span class="modal__input-text">Mô tả</span>
+					<textarea name="" id="" cols="30" rows="10"></textarea>
+				</div>
+			</div>
+  
+			<div class="modal__footer">
+				<button class="footer-btn">Lưu thay đổi</button>
+			</div>
+		</div>
+	</div>
+  </div>
+
+  <div class="modal" [ngClass]="{'show': showFormNew}">
+	<div class="modal__overlay" (click)="hideForm()"></div>
+	<div class="modal__body">
+		<div class="modal__container">
+			<div class="modal__header">
+				<span class="modal__text">Thêm mới</span>
+				<img src="./assets/img/close.svg" alt="" class="modal__close">
+			</div>
+  
+			<div class="modal__content">
+			  <div class="modal__input">
+				<span class="modal__input-text">Tiêu đề</span>
+				<input type="text">
+			</div>
+  
+				<div class="modal__input">
+					<span class="modal__input-text">Mô tả</span>
+					<textarea name="" id="" cols="30" rows="10"></textarea>
+				</div>
+			</div>
+  
+			<div class="modal__footer">
+				<button class="footer-btn">Lưu </button>
+			</div>
+		</div>
+	</div>
+  </div>
+  
