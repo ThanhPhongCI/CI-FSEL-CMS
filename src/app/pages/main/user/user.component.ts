@@ -11,23 +11,44 @@ import { MatTableDataSource } from '@angular/material/table';
   styleUrls: ['./user.component.scss']
 })
 export class UserComponent implements OnInit {
-  displayedColumns: string[] = ['category_id', 'title', 'content', 'status'];
+  displayedColumns: string[] = ['index', 'job_title_id', 'name','edit'];
   dataSource: any;
+  listJob: any = [];
+  listProvince: any = [];
+  showForm = false;
 
 @ViewChild('paginator') paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
   ) {}
 
   ngOnInit(): void {
 
 
-    this.http.get('https://tbdhs-public.s3.ap-southeast-1.amazonaws.com/moet-tbdhs-competition-category.json').subscribe((res:any)=>{
+    this.http.get('https://tbdhs-public.s3.ap-southeast-1.amazonaws.com/moet-tbdhs-user-job-title.json').subscribe((res:any)=>{
       console.log(res);
       this.dataSource = new MatTableDataSource(res);
-    })
+    });
+
+    this.http.get('https://tbdhs-public.s3.ap-southeast-1.amazonaws.com/moet-tbdhs-user-job-title.json').subscribe((data: any) => {
+      this.listJob = data;
+      console.log(this.listJob);
+    });
+
+    this.http.get('https://tbdhs-public.s3.ap-southeast-1.amazonaws.com/moet-tbdhs-user-province.json').subscribe((data: any) => {
+      this.listProvince = data;
+      console.log(this.listProvince);
+    });
+  }
+
+  showEdit() {
+    this.showForm = true;
+  }
+
+  hideForm() {
+    this.showForm = false;
   }
 
   ngAfterViewInit() {

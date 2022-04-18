@@ -1,3 +1,4 @@
+import { IntroductionComponent } from './introduction/introduction.component';
 import { HomeComponent } from "./home/home.component";
 import { MainComponent } from "./main.component";
 import { UserComponent } from "./user/user.component";
@@ -21,6 +22,16 @@ export const mainRoutes = [{
       // component: UserComponent
       loadChildren: () =>
         import('./user/user.module').then((m) => m.UserModule),
+    },
+    {
+      path: 'competition',
+      // component: UserComponent
+      loadChildren: () =>
+        import('./competition/competition.module').then((m) => m.CompetitionModule),
+    },
+    {
+      path: 'introduce',
+      component: IntroductionComponent
     },
     {
       path: '',

@@ -3,9 +3,9 @@
   <mat-drawer-container class="example-container" autosize>
     <div class="main-layout-header">
       <div class="container-box">
-        <app-search-info></app-search-info>
-        <app-search-btn></app-search-btn>
         <!-- <app-header-logo (click)="drawer.toggle()"></app-header-logo> -->
+        <!-- <app-search-info></app-search-info>
+        <app-search-btn></app-search-btn> -->
       </div>
       <div class="profile">
         <app-header-info></app-header-info>
@@ -14,7 +14,7 @@
     <mat-drawer opened #drawer class="example-sidenav" mode="side">
       <app-nav-menu [dataNavMenu]='dataNav'></app-nav-menu>
     </mat-drawer>
-    <div class="example-sidenav-content" [@routeAnimations]="prepareRoute(outlet)">
+    <div class="example-sidenav-content" >
       <router-outlet #outlet="outlet"></router-outlet>
     </div>
   </mat-drawer-container>

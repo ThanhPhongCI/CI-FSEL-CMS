@@ -1,0 +1,14 @@
+
+<app-table-base *ngIf="showForm == false && showFormNew == false" [tableData]="dataTable" [data]="dataSub" [listActive]="listActive" (callback)="handleOutput($event)"></app-table-base>
+
+<div class="edit" *ngIf="showForm == true">
+	<label for="title">Tiêu đề</label>
+	<input type="text" [(ngModel)]="currentTitle" name="title" id="title">
+	<p > Nội dung</p>
+	<app-html-editor  [html]="currentHtml" ></app-html-editor>
+	<button>Lưu chỉnh sửa</button>
+</div>
+
+
+
+<app-html-editor *ngIf="showFormNew == true"></app-html-editor>
