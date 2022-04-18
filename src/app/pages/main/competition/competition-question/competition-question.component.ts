@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { MatPaginator } from '@angular/material/paginator';
 import { CompetitionModel } from './../../../../models/competition/competition-info.model';
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { JsonService } from 'src/app/services/json.service';
 
 @Component({
   selector: 'app-competition-question',
@@ -17,41 +18,108 @@ export class CompetitionQuestionComponent implements OnInit {
   listFilter: any;
   dataSub: any;
   currentHtml: any;
-  currentTitle= '';
+  currentTitle = '';
+  dataPush: any;
+  currentIndex: any;
+  currentStatus: boolean = false;
+  formCreate = false;
 
   constructor(
     private http: HttpClient,
-  ) {}
+    private jsonService: JsonService
+  ) { }
 
   ngOnInit(): void {
     this.dataTable = this.config.collums;
     this.listActive = this.config.btnActice;
-    this.http.get('https://tbdhs-public.s3.ap-southeast-1.amazonaws.com/moet-tbdhs-competition-question.json').subscribe((res:any)=>{
-      console.log(res);
-      res.forEach((element: any) => {
-        element.html = element.content;
-        element.content = element.content.replace(/(<([^>]+)>)/gi, "").slice(0,100) + '...';
+    this.jsonService.get('moet-tbdhs-competition-question.json').subscribe((res: any) => {
+      let data = JSON.parse(res.content);
+      console.log(data);
 
+      data.forEach((element: any) => {
+        element.html = element.content;
+        console.log(element.content);
+
+        element.content = element.content.replace(/(<([^>]+)>)/gi, "").slice(0, 100) + '...';
       });
-      this.dataSub = res;
+      this.dataSub = data;
+    });
+
+    this.jsonService.get('moet-tbdhs-competition-question.json').subscribe((res: any) => {
+      let data = JSON.parse(res.content);
+      console.log(data);
+      this.dataPush = data;
+
     });
   }
 
   handleOutput(data: any) {
-    if(data.type == 'edit'){
+    if (data.type == 'edit') {
       this.showForm = true;
+      console.log(data.item.html);
       this.currentHtml = data.item.html;
       this.currentTitle = data.item.title;
+      this.currentIndex = data.index;
+      this.currentStatus = data.item.status;
     }
-    if(data.type == 'create'){
+    if (data.type == 'create') {
       this.showForm = true;
       this.currentHtml = '';
       this.currentTitle = '';
+      this.formCreate = true;
     }
   }
 
+  changeStatus() {
+    this.currentStatus = !this.currentStatus
+  }
+
+
   hideForm() {
-    this.showForm = false;  
+    this.showForm = false;
     this.showFormNew = false;
+  }
+
+  getData(data: any) {
+    console.log(data);
+
+    if (data == false) {
+      this.hideForm();
+    } else {
+
+      if (this.formCreate) {
+        let arr = {
+          title: this.currentTitle,
+          status: this.currentStatus,
+          content: data
+        }
+        this.dataPush.push(arr);
+        this.jsonService.update({
+          file_name: "moet-tbdhs-competition-question.json",
+          value: this.dataPush
+        }).subscribe((res: any) => {
+          console.log(this.dataPush[this.currentIndex]);
+        },
+          (err) => {
+            console.log(this.dataPush);
+
+          })
+      } else {
+
+        this.dataPush[this.currentIndex].title = this.currentTitle;
+        this.dataPush[this.currentIndex].status = this.currentStatus;
+        this.dataPush[this.currentIndex].content = data;
+        this.jsonService.update({
+          file_name: "moet-tbdhs-competition-question.json",
+          value: this.dataPush
+        }).subscribe((res: any) => {
+          console.log(this.dataPush[this.currentIndex]);
+
+        })
+
+      }
+
+    }
+
   }
 }
