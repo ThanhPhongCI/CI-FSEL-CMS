@@ -23,15 +23,20 @@ export class CompetitionRuleComponent implements OnInit {
   currentIndex: any;
   currentStatus: boolean = false;
   formCreate = false;
-  
+
   constructor(
     private http: HttpClient,
     private jsonService: JsonService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.dataTable = this.config.collums;
     this.listActive = this.config.btnActice;
+    this.getDataJson();
+
+  }
+
+  getDataJson() {
     this.jsonService.get('moet-tbdhs-competition-rule.json').subscribe((res: any) => {
       let data = JSON.parse(res.content);
       console.log(data);
@@ -113,8 +118,8 @@ export class CompetitionRuleComponent implements OnInit {
           file_name: "moet-tbdhs-competition-rule.json",
           value: this.dataPush
         }).subscribe((res: any) => {
-          console.log(this.dataPush[this.currentIndex]);
-
+          this.showForm = false;
+          this.getDataJson();
         })
 
       }

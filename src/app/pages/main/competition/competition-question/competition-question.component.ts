@@ -32,6 +32,10 @@ export class CompetitionQuestionComponent implements OnInit {
   ngOnInit(): void {
     this.dataTable = this.config.collums;
     this.listActive = this.config.btnActice;
+    this.getDataJson();
+  }
+
+  getDataJson(){
     this.jsonService.get('moet-tbdhs-competition-question.json').subscribe((res: any) => {
       let data = JSON.parse(res.content);
       console.log(data);
@@ -113,8 +117,8 @@ export class CompetitionQuestionComponent implements OnInit {
           file_name: "moet-tbdhs-competition-question.json",
           value: this.dataPush
         }).subscribe((res: any) => {
-          console.log(this.dataPush[this.currentIndex]);
-
+          this.showForm = false;
+          this.getDataJson();
         })
 
       }
