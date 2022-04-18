@@ -21,7 +21,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     MainLayoutModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    NgxSpinnerModule
+    // NgxSpinnerModule
   ],
   providers: [AppGuard],
   bootstrap: [AppComponent]

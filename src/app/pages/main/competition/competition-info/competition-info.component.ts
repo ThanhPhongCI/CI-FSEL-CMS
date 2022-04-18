@@ -34,6 +34,11 @@ export class CompetitionInfoComponent implements OnInit {
   ngOnInit(): void {
     this.dataTable = this.config.collums;
     this.listActive = this.config.btnActice;
+    this.getDataJson();
+
+  }
+
+  getDataJson() {
     this.jsonService.get('moet-tbdhs-competition-info.json').subscribe((res: any) => {
       let data = JSON.parse(res.content);
       console.log(data);
@@ -53,7 +58,6 @@ export class CompetitionInfoComponent implements OnInit {
       this.dataPush = data;
 
     });
-
   }
 
   changeStatus() {
@@ -102,19 +106,19 @@ export class CompetitionInfoComponent implements OnInit {
 
       if (this.formCreate) {
         let arr = {
-            title: this.currentTitle,
-            status: this.currentStatus,
-            content: data
-          }
+          title: this.currentTitle,
+          status: this.currentStatus,
+          content: data
+        }
         this.dataPush.push(arr);
         this.jsonService.update({
           file_name: "moet-tbdhs-competition-info.json",
           value: this.dataPush
         }).subscribe((res: any) => {
-          console.log(this.dataPush[this.currentIndex]);
+
         },
           (err) => {
-            console.log(this.dataPush);
+      
 
           })
       } else {
@@ -126,7 +130,8 @@ export class CompetitionInfoComponent implements OnInit {
           file_name: "moet-tbdhs-competition-info.json",
           value: this.dataPush
         }).subscribe((res: any) => {
-          console.log(this.dataPush[this.currentIndex]);
+          this.showForm = false;
+          this.getDataJson();
 
         })
 
