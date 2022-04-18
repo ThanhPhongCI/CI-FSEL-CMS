@@ -37,11 +37,7 @@ export class CompetitionInfoComponent implements OnInit {
     this.jsonService.get('moet-tbdhs-competition-info.json').subscribe((res: any) => {
       let data = JSON.parse(res.content);
       console.log(data);
-      console.log('a');
 
-
-
-      // res = [res];
       data.forEach((element: any) => {
         element.html = element.content;
         console.log(element.content);
