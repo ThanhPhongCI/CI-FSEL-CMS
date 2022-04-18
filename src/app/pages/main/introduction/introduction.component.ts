@@ -28,6 +28,10 @@ export class IntroductionComponent implements OnInit {
   ngOnInit(): void {
     this.dataTable = this.config.collums;
     this.listActive = this.config.btnActice;
+    this.getDataJson();
+  }
+
+  getDataJson(){
     this.http.get('https://tbdhs-public.s3.ap-southeast-1.amazonaws.com/moet-tbdhs-front-page-introduction.json').subscribe((res: any) => {
       console.log(res);
       res = [res];
@@ -40,7 +44,8 @@ export class IntroductionComponent implements OnInit {
   }
 
   getData(data: any) {
-    console.log(data);
+    if(data){
+      console.log(data);
     console.log(this.currentHtml);
     // console.log(this.currentTitle);
     this.jsonService.update({
@@ -53,8 +58,13 @@ export class IntroductionComponent implements OnInit {
       }
 
     }).subscribe((res: any) => {
-
+      this.hideForm();
+      this.getDataJson();
     })
+    }else{
+      this.hideForm();
+    }
+    
   }
 
   handleOutput(data: any) {
