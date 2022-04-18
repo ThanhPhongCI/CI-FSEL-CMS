@@ -48,7 +48,8 @@ export class IntroductionComponent implements OnInit {
       value:
       {
         "title": this.currentTitle,
-        "content": data
+        "content": data,
+        "created_date": new Date().toISOString()
       }
 
     }).subscribe((res: any) => {

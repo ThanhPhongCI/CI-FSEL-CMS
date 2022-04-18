@@ -24,6 +24,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     NgxSpinnerModule
   ],
   providers: [AppGuard],
+  exports: [NgxSpinnerModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
