@@ -5,22 +5,24 @@ import {
   HttpRequest,
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { Observable } from 'rxjs';
-import { retry } from 'rxjs/operators';
+import { finalize, retry } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 @Injectable()
 export class APIInterceptor implements HttpInterceptor {
-  constructor() { }
+  constructor(private spinner: NgxSpinnerService,) { }
   intercept(
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
+    this.spinner.show();
     const request = req.clone({
       url: `${req.url}`,
       setHeaders: {
         'Content-Type': 'application/json',
       },
     });
-    return next.handle(request).pipe(retry(1));
+    return next.handle(request).pipe(finalize(() => this.spinner.hide()),retry(1));
   }
 }
