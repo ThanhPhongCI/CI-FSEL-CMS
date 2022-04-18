@@ -51,12 +51,18 @@ export class CompetitionModel {
                 width: 200,
                 type: 'text',
             },
-			{
-				id: 'noun',
-				name: '',
-				width: 200,
-				type: 'edit'
-			}
+            {
+                id: 'status',
+                name: 'Trạng thái',
+                width: 200,
+                type: 'status',
+            },
+            {
+                id: 'noun',
+                name: '',
+                width: 200,
+                type: 'edit'
+            }
 
         ];
     }

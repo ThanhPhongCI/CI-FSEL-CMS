@@ -25,7 +25,7 @@ export class TableBaseComponent implements OnInit, OnChanges {
   showDelete = false;
   listSelectAll: any = [];
 
-  constructor() {}
+  constructor() { }
 
   ngOnChanges(changes: SimpleChanges) {
     this.totalPage = Math.ceil(this.data.length / this.pageSize);
@@ -112,10 +112,11 @@ export class TableBaseComponent implements OnInit, OnChanges {
     );
   };
 
-  onClickSetting = (item: any, type: any) => {
+  onClickSetting = (item: any, type: any, index: number) => {
     this.callback.emit({
       item,
       type,
+      index
     });
   };
 
@@ -125,7 +126,7 @@ export class TableBaseComponent implements OnInit, OnChanges {
         type: i.type,
         service: i.service,
       });
-    }else{
+    } else {
       this.callback.emit({
         type: i.type
       });
@@ -168,4 +169,4 @@ export class TableBaseComponent implements OnInit, OnChanges {
   exports: [TableBaseComponent]
 })
 
-export class TableBaseComponentModule{}
+export class TableBaseComponentModule { }

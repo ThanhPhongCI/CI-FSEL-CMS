@@ -44,3 +44,28 @@ label, p{
 		outline: none;
 	}}
 }
+
+.btn-status span {
+	width: 125px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	margin-right: 10px;
+	border-radius: 20px;
+	height: 34px;
+	cursor: pointer;
+	background: red;
+	color: #fff;
+	border: none;
+		&.active {
+			background: rgb(40, 185, 27);
+			color: #fff;
+			border: none;
+		}
+
+}
+
+.btn-status {
+	margin-bottom: 10px;
+	display: inline-block;
+}

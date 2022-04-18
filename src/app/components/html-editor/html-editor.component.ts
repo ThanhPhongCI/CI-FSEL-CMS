@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit, NgModule, Input, OnDestroy } from '@angular/core';
+import { Component, OnInit, NgModule, Input, OnDestroy, Output, EventEmitter } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { NgxEditorModule, Editor, Toolbar  } from 'ngx-editor';
+import { NgxEditorModule, Editor, Toolbar } from 'ngx-editor';
 @Component({
   selector: 'app-html-editor',
   templateUrl: './html-editor.component.html',
@@ -20,11 +20,25 @@ export class HtmlEditorComponent implements OnInit, OnDestroy {
     ['align_left', 'align_center', 'align_right', 'align_justify'],
   ];
   @Input() html: any;
+  @Output() callback = new EventEmitter();
+
   constructor() { }
 
   ngOnInit(): void {
     this.editor = new Editor();
   }
+
+
+  handleData(data: any) {
+    if (data) {
+      this.callback.emit(this.html);
+    } else {
+      this.callback.emit(false);
+
+    }
+
+  }
+
   ngOnDestroy(): void {
     this.editor.destroy();
   }
@@ -60,7 +74,7 @@ export class HtmlEditorComponent implements OnInit, OnDestroy {
         align_justify: 'Justify',
         text_color: 'Text Color',
         background_color: 'Background Color',
-    
+
         // pupups, forms, others...
         url: 'URL',
         text: 'Text',
@@ -76,4 +90,4 @@ export class HtmlEditorComponent implements OnInit, OnDestroy {
   exports: [HtmlEditorComponent]
 })
 
-export class HtmlEditorComponentModule{}
+export class HtmlEditorComponentModule { }
