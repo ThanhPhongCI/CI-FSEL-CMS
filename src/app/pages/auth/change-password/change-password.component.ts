@@ -35,8 +35,8 @@ export class ChangePasswordComponent implements OnInit {
 
   focus() {
     this.checkNullPass = false;
-
   }
+
 
   focusTwo() {
     this.checkNullPassTwo = false;
@@ -46,24 +46,27 @@ export class ChangePasswordComponent implements OnInit {
     this.change.value.changePassword = this.change.value.changePassword.toLowerCase();
     this.change.value.changePasswordTwo = this.change.value.changePasswordTwo.toLowerCase();
 
-    if (!this.change.value.changePassword) {
-      this.checkNullPass = true;
-      if (!this.change.value.changePasswordTwo) {
-        this.checkNullPassTwo = true;
-      } else {
-        this.checkNullPass = false;
-      }
-    } else if (!this.change.value.changePasswordTwo) {
-      this.checkNullPassTwo = true;
+
+    if(!this.change.valid) {
       if (!this.change.value.changePassword) {
         this.checkNullPass = true;
-      } else {
-        this.checkNullPass = false;
+        if (!this.change.value.changePasswordTwo) {
+          this.checkNullPassTwo = true;
+        } else {
+          this.checkNullPass = false;
+        }
+      } else if (!this.change.value.changePasswordTwo) {
+        this.checkNullPassTwo = true;
+        if (!this.change.value.changePassword) {
+          this.checkNullPass = true;
+        } else {
+          this.checkNullPass = false;
+        }
       }
-    } else {
+
+    }else {
       console.log(this.change.value)
     }
-
 
   }
 

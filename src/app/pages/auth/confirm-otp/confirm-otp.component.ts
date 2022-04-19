@@ -8,6 +8,7 @@ import { FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./confirm-otp.component.scss']
 })
 export class ConfirmOtpComponent implements OnInit {
+  checkNullOtp = false;
 
   constructor(
     private fb: FormBuilder,
@@ -26,7 +27,24 @@ export class ConfirmOtpComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.conFirm.value);
+
+    this.conFirm.value.otp = this.conFirm.value.otp.toLowerCase();
+
+    if (!this.conFirm.valid) {
+      if(!this.conFirm.value.email) {
+        this.checkNullOtp = true;
+      } else {
+        this.checkNullOtp = false;
+      }
+    } else {
+      console.log(this.conFirm.value);
+    }
+
+
+  }
+
+  focus() {
+    this.checkNullOtp = false;
   }
 
   handleClear() {

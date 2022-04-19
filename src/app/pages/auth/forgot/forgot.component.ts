@@ -9,6 +9,7 @@ import { FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./forgot.component.scss']
 })
 export class ForgotComponent implements OnInit {
+  checkNullPass = false;
 
   constructor(
     private fb:FormBuilder,
@@ -28,17 +29,29 @@ export class ForgotComponent implements OnInit {
 
   }
 
-  onSubmit() {
-    console.log(this.forGot.value);
+  focus() {
+    this.checkNullPass = false;
   }
 
-  confirm() {
-    console.log(this.forGot.value);
-    this.router.navigate(['confirm-otp']);
-    setTimeout(() => {
-      window.location.reload();
-    },300)
+  onSubmit() {
+    this.forGot.value.email = this.forGot.value.email.toLowerCase();
+
+    if (!this.forGot.valid) {
+      if(!this.forGot.value.email) {
+        this.checkNullPass = true;
+      } else {
+        this.checkNullPass = false;
+      }
+    } else {
+      console.log(this.forGot.value);
+      this.router.navigate(['confirm-otp']);
+      setTimeout(() => {
+        window.location.reload();
+      },300)
+    }
+
   }
+
 
 
   ngOnInit(): void {

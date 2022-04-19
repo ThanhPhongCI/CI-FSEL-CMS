@@ -12,19 +12,22 @@
           <div class="admin-forget__address">
               <span>Địa chỉ email</span>
               <div class="admin-forget__address-input">
-                  <input type="text" placeholder="tenhomthu@gmail.com" formControlName="email" (keydown.space)="$event.preventDefault()">
+                  <input type="text" placeholder="tenhomthu@gmail.com" formControlName="email" (keydown.space)="$event.preventDefault()" (focus)="focus()">
                   <img class="clear" src="assets/img/delete-while.svg" alt="" (click)="handleClear()" *ngIf="f.email.value">
               </div>
 
           </div>
-          <p *ngIf="f.email.invalid && (f.email.dirty || f.email.touched)" class="alert-1 ng-star-inserted">
+          <div *ngIf="f.email.errors && (f.email.dirty || f.email.touched)"><p *ngIf="!checkNullPass" class="alert-1 ng-star-inserted">
+            Vui lòng nhập đầy đủ thông tin
+          </p></div>
+          <p *ngIf="checkNullPass" class="alert-1 ng-star-inserted">
             Vui lòng nhập đầy đủ thông tin
           </p>
 
 
       </div>
       <div class="admin-forget__button">
-        <button (click)="confirm()" >
+        <button (click)="onSubmit()" >
             <span>Gửi xác nhận</span>
         </button>
       </div>

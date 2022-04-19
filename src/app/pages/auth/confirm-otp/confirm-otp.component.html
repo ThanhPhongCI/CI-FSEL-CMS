@@ -12,14 +12,15 @@
           <div class="admin-confirm__code">
               <span>Xác thực OTP</span>
               <div class="admin-confirm__code-input">
-                  <input type="text" formControlName="otp">
+                  <input type="text" formControlName="otp" (keydown.space)="$event.preventDefault()" (focus)="focus()">
                   <img class="clear" src="assets/img/delete-while.svg" alt="" (click)="handleClear()" *ngIf="f.otp.value">
 
               </div>
           </div>
-          <p *ngIf="f.otp.invalid && (f.otp.dirty || f.otp.touched)" class="alert-1 ng-star-inserted">
+          <div *ngIf="f.otp.errors && (f.otp.dirty || f.otp.touched)" ><p *ngIf="!checkNullOtp" class="alert-1 ng-star-inserted">
             Vui lòng nhập đầy đủ thông tin
-          </p>
+          </p></div>
+          <p *ngIf="checkNullOtp">Vui lòng nhập đầy đủ thông tin</p>
 
       </div>
       <div class="admin-notifi mg-none">
