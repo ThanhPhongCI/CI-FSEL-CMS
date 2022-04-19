@@ -46,6 +46,10 @@ export class LoginComponent implements OnInit {
 
   focus() {
     this.checkNullAdmin = false;
+
+  }
+
+  focusTwo() {
     this.checkNullPass = false;
   }
 

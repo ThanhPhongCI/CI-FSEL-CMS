@@ -43,6 +43,7 @@ export class ForgotComponent implements OnInit {
         this.checkNullPass = false;
       }
     } else {
+
       console.log(this.forGot.value);
       this.router.navigate(['confirm-otp']);
       setTimeout(() => {

@@ -24,7 +24,7 @@
           <div class="admin-login__name">
               <span>Mật khẩu</span>
               <div class="admin-login__name-input">
-                  <input type="password" placeholder="Vui lòng nhập mật khẩu" formControlName="password" (focus)="focus()" (keydown.space)="$event.preventDefault()">
+                  <input type="password" placeholder="Vui lòng nhập mật khẩu" formControlName="password" (focus)="focusTwo()" (keydown.space)="$event.preventDefault()">
                   <img class="d-none" src="assets/img/icon-show.svg" alt="" >
                   <img class="clear" src="assets/img/delete-while.svg" alt="" (click)="handleClearTwo()" *ngIf="f.password.value">
                   <div *ngIf="checkNullPass" class="ng-star-inserted">
