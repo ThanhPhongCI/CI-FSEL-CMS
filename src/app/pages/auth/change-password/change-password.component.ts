@@ -9,6 +9,8 @@ import { FormBuilder, Validators } from '@angular/forms';
 export class ChangePasswordComponent implements OnInit {
   checkNullPass = false;
   checkNullPassTwo = false;
+  checkPass = false;
+  checkLength = false;
 
   constructor(
     private fb:FormBuilder,
@@ -40,7 +42,9 @@ export class ChangePasswordComponent implements OnInit {
 
   focusTwo() {
     this.checkNullPassTwo = false;
+
   }
+
 
   onSubmit() {
     this.change.value.changePassword = this.change.value.changePassword.toLowerCase();
@@ -71,6 +75,21 @@ export class ChangePasswordComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.change.valueChanges.subscribe(()=>{
+      console.log(this.change.value.changePasswordTwo.length);
+      if(this.change.value.changePasswordTwo.length>=6 && this.change.value.changePasswordTwo.length<= 12){
+        this.checkLength = true;
+      }else{
+        this.checkLength = false;
+      }
+      if (this.change.value.changePassword === this.change.value.changePasswordTwo) {
+        this.checkPass = true;
+      } else {
+          this.checkPass = false;
+
+      }
+
+    })
   }
 
 }
