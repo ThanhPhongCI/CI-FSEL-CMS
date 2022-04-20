@@ -21,7 +21,7 @@ export class CompetitionRuleComponent implements OnInit {
   currentTitle = '';
   dataPush: any;
   currentIndex: any;
-  currentStatus: boolean = false;
+  currentStatus = false;
   formCreate = false;
 
   constructor(
